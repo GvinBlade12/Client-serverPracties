@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "userId": 1,
+    "title": "Красивый закат сегодня",
+    "body": "Смотрите, какой цвет неба... Просто невероятное зрелище!",
+    "avatarUrl": "https://i.pravatar.cc/150?img=1"
+  },
+  {
+    "id": 2,
+    "userId": 2,
+    "title": "Новый кофе-мастер-класс",
+    "body": "Приходите все! Научу варить идеальный кофе.",
+    "avatarUrl": "https://i.pravatar.cc/150?img=2"
+  },
+  {
+    "id": 3,
+    "userId": 3,
+    "title": "Мой новый проект",
+    "body": "Наконец-то закончил работу над приложением!",
+    "avatarUrl": "https://i.pravatar.cc/150?img=3"
+  },
+  {
+    "id": 4,
+    "userId": 4,
+    "title": "Путешествие в горы",
+    "body": "Невероятные виды открываются с вершины.",
+    "avatarUrl": "https://i.pravatar.cc/150?img=4"
+  },
+  {
+    "id": 5,
+    "userId": 5,
+    "title": "Новый ресторан",
+    "body": "Отличное место для ужина, рекомендую!",
+    "avatarUrl": "https://i.pravatar.cc/150?img=5"
+  },
+  {
+    "id": 6,
+    "userId": 6,
+    "title": "Фотография дня",
+    "body": "Поймал идеальный момент на камеру.",
+    "avatarUrl": "https://i.pravatar.cc/150?img=6"
+  },
+  {
+    "id": 7,
+    "userId": 7,
+    "title": "Музыкальный фестиваль",
+    "body": "Кто будет на фестивале этим летом?",
+    "avatarUrl": "https://i.pravatar.cc/150?img=7"
+  },
+  {
+    "id": 8,
+    "userId": 8,
+    "title": "Книжная рекомендация",
+    "body": "Прочитал отличную книгу, советую всем!",
+    "avatarUrl": "https://i.pravatar.cc/150?img=8"
+  }
+]

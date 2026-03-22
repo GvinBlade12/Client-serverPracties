@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "full_name": "JetBrains/kotlin",
+    "description": "The Kotlin Programming Language",
+    "stargazers_count": 48000,
+    "language": "Kotlin"
+  },
+  {
+    "id": 2,
+    "full_name": "square/retrofit",
+    "description": "Type-safe HTTP client for Android and Java",
+    "stargazers_count": 42000,
+    "language": "Java"
+  },
+  {
+    "id": 3,
+    "full_name": "android/compose-samples",
+    "description": "Official Jetpack Compose samples",
+    "stargazers_count": 30000,
+    "language": "Kotlin"
+  }
+]
