@@ -21,4 +21,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "prac3"
 include(":app")
- 
