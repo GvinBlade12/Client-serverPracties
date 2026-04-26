@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Купить продукты",
+    "description": "Молоко, хлеб, сыр",
+    "isCompleted": false
+  },
+  {
+    "title": "Сделать домашнюю работу",
+    "description": "Подготовить практику по Android",
+    "isCompleted": true
+  },
+  {
+    "title": "Позвонить маме",
+    "description": "Узнать, как дела",
+    "isCompleted": false
+  }
+]
