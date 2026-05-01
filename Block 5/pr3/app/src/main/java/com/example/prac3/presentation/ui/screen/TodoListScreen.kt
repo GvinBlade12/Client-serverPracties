@@ -9,15 +9,34 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.prac3.presentation.viewmodel.TodoViewModel
 import com.example.prac3.presentation.ui.component.TodoItem
+import com.example.prac3.domain.model.Todo
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TodoListScreen(viewModel: TodoViewModel) {
 
     val todos by viewModel.todos.collectAsStateWithLifecycle()
+    val isColored by viewModel.isColored.collectAsStateWithLifecycle()
+
+    var editingTodo by remember { mutableStateOf<Todo?>(null) }
+    var newText by remember { mutableStateOf("") }
 
     Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Todo") },
+                actions = {
+                    Switch(
+                        checked = isColored,
+                        onCheckedChange = { viewModel.setColored(it) }
+                    )
+                }
+            )
+        },
         floatingActionButton = {
-            FloatingActionButton(onClick = { viewModel.addTodo("Новая задача") }) {
+            FloatingActionButton(onClick = {
+                viewModel.addTodo("Новая задача")
+            }) {
                 Text("+")
             }
         }
@@ -27,9 +46,41 @@ fun TodoListScreen(viewModel: TodoViewModel) {
             items(todos) { todo ->
                 TodoItem(
                     todo = todo,
-                    onClick = { viewModel.toggle(todo) }
+                    isColored = isColored,
+                    onToggle = { viewModel.toggle(todo) },
+                    onEdit = {
+                        editingTodo = todo
+                        newText = todo.title
+                    },
+                    onDelete = { viewModel.delete(todo) }
                 )
             }
+        }
+
+        // 🔥 Диалог редактирования
+        if (editingTodo != null) {
+            AlertDialog(
+                onDismissRequest = { editingTodo = null },
+                confirmButton = {
+                    TextButton(onClick = {
+                        viewModel.updateTitle(editingTodo!!, newText)
+                        editingTodo = null
+                    }) {
+                        Text("Сохранить")
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { editingTodo = null }) {
+                        Text("Отмена")
+                    }
+                },
+                text = {
+                    TextField(
+                        value = newText,
+                        onValueChange = { newText = it }
+                    )
+                }
+            )
         }
     }
 }

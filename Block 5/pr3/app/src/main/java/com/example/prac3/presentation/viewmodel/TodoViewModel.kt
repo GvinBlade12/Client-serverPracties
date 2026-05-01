@@ -2,8 +2,7 @@ package com.example.prac3.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.prac3.data.local.TodoDao
-import com.example.prac3.data.local.TodoEntity
+import com.example.prac3.data.SettingsDataStore
 import com.example.prac3.domain.model.Todo
 import com.example.prac3.domain.repository.TodoRepository
 import kotlinx.coroutines.flow.SharingStarted
@@ -11,8 +10,12 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class TodoViewModel(
-    private val repository: TodoRepository
+    private val repository: TodoRepository,
+    private val settings: SettingsDataStore
 ) : ViewModel() {
+
+    val isColored = settings.isColored
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), true)
 
     val todos = repository.getTodos()
         .stateIn(
@@ -20,6 +23,12 @@ class TodoViewModel(
             SharingStarted.WhileSubscribed(5000),
             emptyList()
         )
+
+    fun setColored(value: Boolean) {
+        viewModelScope.launch {
+            settings.setColored(value)
+        }
+    }
 
     fun addTodo(title: String) {
         viewModelScope.launch {
@@ -38,6 +47,13 @@ class TodoViewModel(
     fun toggle(todo: Todo) {
         viewModelScope.launch {
             repository.update(todo.copy(isDone = !todo.isDone))
+        }
+    }
+
+    // 🔥 НОВОЕ: редактирование
+    fun updateTitle(todo: Todo, newTitle: String) {
+        viewModelScope.launch {
+            repository.update(todo.copy(title = newTitle))
         }
     }
 }
