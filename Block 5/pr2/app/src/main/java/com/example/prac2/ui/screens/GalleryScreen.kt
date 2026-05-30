@@ -28,7 +28,7 @@ fun GalleryScreen(viewModel: PhotoViewModel) {
     val context = LocalContext.current
     var currentFile by remember { mutableStateOf<File?>(null) }
 
-    // 📸 камера
+    //  камера
     val cameraLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.TakePicture()
     ) { success ->
@@ -37,7 +37,7 @@ fun GalleryScreen(viewModel: PhotoViewModel) {
         }
     }
 
-    // 🔐 permission
+    //  permission
     val permissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestPermission()
     ) { granted ->
